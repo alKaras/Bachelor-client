@@ -1,8 +1,11 @@
 import React from 'react'
 import myFooter from './Footer.module.scss';
-
 export default function Footer() {
     return (
-        <div>Footer</div>
+        <footer className={`${myFooter.footer} text-center`}>
+            <div className='copyright'>
+                Copyright SumEnergo &copy;
+            </div>
+        </footer>
     )
 }

@@ -31,7 +31,7 @@ export default function ContentHome() {
                 </Col>
             </Row>
             <div className={`${myContentHome.about}`}>
-                <h2 className={`${myContentHome['head-text']}`}>Послуги</h2>
+                <h2 className={`${myContentHome['head-text']}`}>Про компанію</h2>
                 <p className={`${myContentHome['about-text']}`}>
                     Ми забезпечуємо надійне та безперебійне постачання електроенергії для вашого дому та бізнесу.
                     Наша команда фахівців працює цілодобово, щоб забезпечити максимальний комфорт та безпеку для наших клієнтів.
@@ -89,6 +89,26 @@ export default function ContentHome() {
                         </div>
                     </Col>
                 </Row>
+            </div>
+
+            <div className={`${myContentHome['contacts']}`}>
+                <h2 className={`${myContentHome['head-text']}`}>Контакти</h2>
+                <p className={`${myContentHome['about-text']}`}>
+                    <p className={`${myContentHome['contact-text']}`}>Будемо раді почути вас!</p>
+                    Зв'яжіться з нами вже сьогодні та довірте свої потреби в електропостачанні нам. Ми завжди готові допомогти вам забезпечити стабільну та надійну енергію для вашого життя та роботи.
+                </p>
+                <div className={`${myContentHome['contact-link']}`}>
+                    <p>Зв'яжіться з нами за допомогою наступних контактних даних</p>
+                    <p>Телефон: <span>+380500000000</span></p>
+                    <p> Пошта: <span>sumenergo.wrk@gmail.com</span></p>
+
+
+                </div>
+
+
+
+
+
             </div>
 
         </div>

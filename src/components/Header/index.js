@@ -21,7 +21,7 @@ export default function Header() {
                 </Navbar.Brand>
             </LinkContainer>
             <Nav className={`${myHeader['btn-login']} ms-auto`}>
-                <LinkContainer to={'/login'} >
+                <LinkContainer to={'/sign-in'} >
                     <Button className='btn btn-primary'>Увійти</Button>
                 </LinkContainer>
             </Nav>

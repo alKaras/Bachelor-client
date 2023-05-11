@@ -1,0 +1,38 @@
+.root {
+    padding: 10px 60px;
+    background-color: #449DD1;
+    img {
+        padding-right: 5px;
+    }
+
+    .brand-text {
+        color: white;
+        font-size: 24px;
+        margin: 0;
+        @media screen and (max-width: 767px) {
+            font-size: calc(14px + (3.5 + 3.5 * 0.7) * ((100vw - 320px) / 1260));
+        }
+    }
+
+    .nav-text {
+        color: white;
+        font-size: 16px;
+        @media screen and (max-width: 767px) {
+            font-size: calc(10px + (6 + 6 * 0.7) * ((100vw - 320px) / 1260));
+        }
+    }
+
+    .btn-collapse {
+        margin-left: 10px;
+    }
+
+    .btn-login {
+        order: 2;
+        justify-self: flex-end !important;
+
+        @media (max-width: 767px) {
+            order: 0;
+            
+        }
+    }
+}

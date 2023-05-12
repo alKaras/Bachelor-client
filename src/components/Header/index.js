@@ -1,8 +1,10 @@
 import React from 'react'
-import { Nav, Navbar, Button } from 'react-bootstrap';
+import { Nav, Navbar, Button, Dropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
 import myHeader from './Header.module.scss';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
+import { checkIslogin, logout } from '../../redux/slices/loginSlice';
 
 const Colors = {
     "Brand": "#150578",
@@ -20,6 +22,7 @@ export default function Header() {
                     <p className={myHeader['brand-text']}>Sum<span style={{ color: Colors.Brand }}>Energo</span></p>
                 </Navbar.Brand>
             </LinkContainer>
+
             <Nav className={`${myHeader['btn-login']} ms-auto`}>
                 <LinkContainer to={'/sign-in'} >
                     <Button className='btn btn-primary'>Увійти</Button>

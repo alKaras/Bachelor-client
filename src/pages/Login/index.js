@@ -1,50 +1,50 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
 import myLogin from './Login.module.scss'
+import { Link } from 'react-router-dom'
 export default function Login() {
-    const [eye, seteye] = useState(true);
-    const [passtype, setPasstype] = useState("password");
 
-    const Eye = () => {
-        if (passtype === "password") {
-            setPasstype("text");
-            seteye(false);
+    const [passType, setPassType] = useState("password");
+
+
+
+    const togglePass = (e) => {
+        e.preventDefault();
+        if (passType === "password") {
+            setPassType("text");
         } else {
-            setPasstype("password");
-            seteye(true);
+            setPassType("password");
         }
     }
     return (
 
         <div className={`${myLogin.login}`}>
-            <form action="" className={`${myLogin['login-form']}`}>
+            <form className={`${myLogin['login-form']}`} >
                 <div className={`${myLogin['auth-form-content']}`}>
-                    <h3 className={`${myLogin['auth-form-title']}`}>Увійти у кабінет</h3>
-                    <div className="form-group mt-2">
-                        <label>Email address</label>
+                    <h3 className={`${myLogin['auth-form-title']}`}>Вхід у кабінет</h3>
+                    <div className="d-flex flex-column">
+                        <label>Пошта</label>
                         <input
-                            type="email"
-                            className="form-control mt-2"
-                            placeholder="Enter email"
+                            type="text"
+                            className=''
+                            placeholder='Введіть свою пошту'
+
                         />
                     </div>
-                    <div className={` ${myLogin['input-pass']}  mt-4`}>
-                        {/* <label>Password</label> */}
+                    <div className="d-flex flex-column">
+                        <label>Пароль</label>
                         <input
-                            type={passtype}
-                            className={`${myLogin['']} mt-2`}
-                            placeholder="Enter password"
+                            type={passType}
+                            className=''
+                            placeholder='Введіть свій пароль'
+
                         />
-                        <i className={`fa ${eye ? myLogin["fa-eye-slash"] : myLogin["fa-eye"]}`} onClick={Eye}></i>
+                        <button onClick={togglePass} className={`${myLogin['btn-show']}`}>Показати пароль</button>
+
                     </div>
-                    <div className="d-grid gap-2 mt-4">
-                        <button type="submit" className="btn btn-primary">
-                            Submit
-                        </button>
-                    </div>
-                    <p className="forgot-password text-right mt-3">
-                        <Link to={'/forgot-pass'}>Забули пароль?</Link>
-                    </p>
+
+                    <button type="submit" className='btn btn-primary'>Увійти</button>
+
+
                 </div>
             </form>
         </div>

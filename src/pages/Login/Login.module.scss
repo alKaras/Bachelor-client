@@ -1,0 +1,64 @@
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+
+    .login-form {
+        width: 420px;
+        box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+        padding: 30px 0;
+        border-radius: 8px;
+        background-color: white;
+    }
+
+    .form-group {
+        position: relative;
+    }
+
+    .auth-form-content {
+        padding: 0 20px;
+        position: relative;
+    }
+
+    .auth-form-title {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 24px;
+        color: rgb(34, 34, 34);
+        font-weight: 800;
+    }
+
+    label {
+        font-size: 14px;
+        font-weight: 600;
+        color: rgb(34, 34, 34);
+    }
+
+    .input-pass {
+        position: relative;
+        height: 45px;
+        width: 100%;
+        border: none;
+        border-radius: 9px;
+        border: 1px solid #e0e3e9;
+        padding: 0 10px;
+        outline: 0;
+    }
+
+    .input-pass .fa-eye-slash {
+        position: absolute;
+        right: 10px;
+        top: 15px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    .fa-eye {
+        position: absolute;
+        right: 10px;
+        top: 15px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+}

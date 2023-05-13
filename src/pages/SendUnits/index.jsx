@@ -47,7 +47,8 @@ export default function SendUnits() {
                             {errors.unitNo && <div className={`${mySend['error-style']}`}>{errors.unitNo.message}</div>}
                             <button type="submit" className="btn btn-primary">Передати</button>
 
-                            {error && <div className={`${mySend.error}`}>{error}</div>}
+                            {error && <div className={`${mySend.error}`}>{error}</div>
+                            }
                         </form>
                     </Col>
                     <Col>

@@ -2,11 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from '../../utils/axios.js';
 
 const initialState = {
-    units: {
-        items: [],
-        isLoading: false,
-        error: null,
-    }
+
+    items: [],
+    isLoading: "loading",
+    error: null,
+
 };
 
 export const createUnit = createAsyncThunk('units/create', async (params, { rejectWithValues }) => {
@@ -36,27 +36,27 @@ const unitsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(createUnit.pending, (state) => {
-                state.isLoading = true
+                state.isLoading = "loading"
                 state.error = null
             })
             .addCase(createUnit.fulfilled, (state, action) => {
-                state.isLoading = false
-                state.units = action.payload.unit
+                state.isLoading = "loaded"
             })
             .addCase(createUnit.rejected, (state, action) => {
-                state.isLoading = false
+                state.isLoading = "error"
                 state.error = action.error.message
             })
             .addCase(getUnitById.pending, (state) => {
-                state.isLoading = true
+                state.isLoading = "loading"
+                state.items = []
                 state.error = null
             })
             .addCase(getUnitById.fulfilled, (state, action) => {
-                state.isLoading = false
-                state.units = action.payload.units
+                state.isLoading = "loaded"
+                state.items = action.payload.units
             })
             .addCase(getUnitById.rejected, (state, action) => {
-                state.isLoading = false
+                state.isLoading = "error"
                 state.error = action.error.message
             })
 
@@ -65,4 +65,4 @@ const unitsSlice = createSlice({
 })
 
 export const unitsReducer = unitsSlice.reducer;
-export const infoAboutUnits = (state) => (state.units.units);
+export const infoAboutUnits = (state) => (state.units.items);

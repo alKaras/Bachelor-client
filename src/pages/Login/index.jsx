@@ -30,6 +30,8 @@ export default function Login() {
         dispatch(loginUser(values));
 
     }
+
+    console.log(error);
     useEffect(() => {
         if (isLogged && isAdmin) {
             navigate('/adminCabinet')

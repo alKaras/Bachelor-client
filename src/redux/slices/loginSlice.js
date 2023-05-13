@@ -36,6 +36,9 @@ const loginSlice = createSlice({
     reducers: {
         logout: (state) => {
             state.user = null
+            state.adminrole = null
+            state.error = null
+            state.token = null
         }
     },
     extraReducers: (builder) => {
@@ -72,7 +75,7 @@ const loginSlice = createSlice({
 
 export const selectIsLogged = (state) => Boolean(state.login.token)
 export const selectIsAdmin = (state) => Boolean(state.login.adminrole)
-// export const infoAboutUser = (state) => (state.login.user);
+export const infoAboutUser = (state) => (state.login.user);
 
 export const { logout } = loginSlice.actions;
 

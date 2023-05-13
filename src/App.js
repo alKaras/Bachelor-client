@@ -5,6 +5,7 @@ import Service from './pages/Service';
 import Login from './pages/Login';
 import UserCabinet from './pages/UserCabinet';
 import AdminCabinet from './pages/AdminCabinet';
+import SendUnits from './pages/SendUnits'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getUser, selectIsLogged } from './redux/slices/loginSlice';
@@ -25,7 +26,7 @@ export default function App() {
                 <Route path='/sign-up' element={<Register />} />
                 <Route path='/adminCabinet' element={<AdminCabinet />} />
                 <Route path='/userCabinet' element={<UserCabinet />} />
-
+                <Route path='/send-unit' element={<SendUnits />} />
             </Routes>
         </div>
     );

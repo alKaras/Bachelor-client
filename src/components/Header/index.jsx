@@ -40,31 +40,29 @@ export default function Header() {
                 <>
                     <Nav>
                         <Dropdown align="end">
-                            <Dropdown.Toggle >
-                                <h1>{user.fname} {user.lname}</h1>
+                            <Dropdown.Toggle className='d-flex align-items-center justify-content-center' >
+                                <h1 className='mb-0 me-1'>{user.fname} {user.lname}</h1>
                             </Dropdown.Toggle>
-                            <Dropdown.Menu>
+                            <Dropdown.Menu className='mt-3 p-3'>
                                 {isAdmin ? (
                                     <>
-                                        <LinkContainer to='/adminCabinet'>
-                                            <Dropdown.Item >Кабінет</Dropdown.Item>
+                                        <LinkContainer className={`${myHeader['drop-link']}`} to='/adminCabinet'>
+                                            <Dropdown.Item>Кабінет</Dropdown.Item>
                                         </LinkContainer>
-                                        <hr />
                                     </>
                                 ) :
                                     <>
-                                        <LinkContainer to='/userCabinet'>
+                                        <LinkContainer className={`${myHeader['drop-link']}`} to='/userCabinet'>
                                             <Dropdown.Item >Кабінет</Dropdown.Item>
                                         </LinkContainer>
-                                        <hr />
                                     </>
                                 }
 
-                                <Dropdown.Item href="#/action-2">Передати показання</Dropdown.Item>
-                                <hr />
-                                <Dropdown.Item href="#/action-2">Послуги</Dropdown.Item>
-                                <hr />
-                                <Dropdown.Item onClick={logOutHandler}>Вийти</Dropdown.Item>
+                                <LinkContainer to='/send-unit'>
+                                    <Dropdown.Item className={`${myHeader['drop-link']}`}>Передати показання</Dropdown.Item>
+                                </LinkContainer>
+                                <Dropdown.Item href="#/action-2" className={`${myHeader['drop-link']}`}>Послуги</Dropdown.Item>
+                                <Dropdown.Item onClick={logOutHandler} className={`${myHeader['drop-link']}`}>Вийти</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </Nav>

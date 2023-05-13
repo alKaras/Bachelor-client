@@ -8,8 +8,8 @@ import { loginUser, selectIsAdmin, selectIsLogged } from '../../redux/slices/log
 
 export default function Login() {
     const isLogged = useSelector(selectIsLogged);
-    const { error } = useSelector((state) => state.logreg);
     const isAdmin = useSelector(selectIsAdmin);
+    const { error } = useSelector((state) => state.logreg);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const {

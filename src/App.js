@@ -5,7 +5,16 @@ import Service from './pages/Service';
 import Login from './pages/Login';
 import UserCabinet from './pages/UserCabinet';
 import AdminCabinet from './pages/AdminCabinet';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getUser, selectIsLogged } from './redux/slices/loginSlice';
+
 export default function App() {
+    const dispatch = useDispatch();
+    const isLogged = useSelector(selectIsLogged);
+    useEffect(() => {
+        dispatch(getUser())
+    }, [dispatch])
     return (
         <div className="_container">
             <Routes>

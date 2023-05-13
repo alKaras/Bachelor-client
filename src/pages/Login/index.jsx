@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 // import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import myLogin from './Login.module.scss'
 import { useForm } from 'react-hook-form';
 import { loginUser, selectIsAdmin, selectIsLogged } from '../../redux/slices/loginSlice';
 
 export default function Login() {
     const isLogged = useSelector(selectIsLogged);
-    const { error } = useSelector((state) => state.login);
+    const { error } = useSelector((state) => state.logreg);
     const isAdmin = useSelector(selectIsAdmin);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -20,8 +20,8 @@ export default function Login() {
         }
     } = useForm({
         defaultValues: {
-            email: "al.karas@gmail.com",
-            password: "Karas12345",
+            email: "",
+            password: "",
         },
         mode: "onChange",
     });
@@ -81,7 +81,10 @@ export default function Login() {
 
                     </div>
 
-                    <button type="submit" className='btn btn-primary'>Увійти</button>
+                    <div className='d-flex justify-content-between align-items-center'>
+                        <button type="submit" className='btn btn-primary'>Увійти</button>
+                        <Link to={'/sign-up'}>Не маєте акаунту. Зареєструйтесь</Link>
+                    </div>
 
                     {error && <div className={`${myLogin.error}`}>{error}</div>}
                 </div>

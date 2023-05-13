@@ -21,6 +21,17 @@ export const loginUser = createAsyncThunk('login/loginUser', async (params, { re
     }
 })
 
+export const registerUser = createAsyncThunk('login/registerUser', async (params, { rejectWithValue }) => {
+    try {
+        const { data } = await axios.post('/user/register', params);
+
+        return data;
+    } catch (error) {
+        rejectWithValue(error.response.data);
+    }
+
+})
+
 export const getUser = createAsyncThunk('login/getUser', async (_, { rejectWithValue }) => {
     try {
         const { data } = await axios.get('/user/getUser');
@@ -31,7 +42,7 @@ export const getUser = createAsyncThunk('login/getUser', async (_, { rejectWithV
 })
 
 const loginSlice = createSlice({
-    name: 'login',
+    name: 'logreg',
     initialState,
     reducers: {
         logout: (state) => {
@@ -43,6 +54,20 @@ const loginSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            .addCase(registerUser.pending, (state) => {
+                state.isLoading = true
+                state.error = null
+            })
+
+            .addCase(registerUser.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.user = action.payload.user
+                state.error = null
+            })
+            .addCase(registerUser.rejected, (state, action) => {
+                state.isLoading = false
+                state.error = action.payload.message
+            })
             .addCase(loginUser.pending, (state) => {
                 state.isLoading = true
                 state.error = null
@@ -77,9 +102,9 @@ const loginSlice = createSlice({
     }
 })
 
-export const selectIsLogged = (state) => Boolean(state.login.token)
-export const selectIsAdmin = (state) => Boolean(state.login.adminrole)
-export const infoAboutUser = (state) => (state.login.user);
+export const selectIsLogged = (state) => Boolean(state.logreg.token)
+export const selectIsAdmin = (state) => Boolean(state.logreg.adminrole)
+export const infoAboutUser = (state) => (state.logreg.user);
 
 export const { logout } = loginSlice.actions;
 

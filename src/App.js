@@ -8,6 +8,7 @@ import AdminCabinet from './pages/AdminCabinet';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getUser, selectIsLogged } from './redux/slices/loginSlice';
+import Register from './pages/Register';
 
 export default function App() {
     const dispatch = useDispatch();
@@ -21,6 +22,7 @@ export default function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/service' element={<Service />} />
                 <Route path='/sign-in' element={<Login />} />
+                <Route path='/sign-up' element={<Register />} />
                 <Route path='/adminCabinet' element={<AdminCabinet />} />
                 <Route path='/userCabinet' element={<UserCabinet />} />
 

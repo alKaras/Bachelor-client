@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import myRegister from './Register.module.scss'
 import { useForm } from 'react-hook-form';
-import { registerUser } from '../../redux/slices/loginSlice';
+import { registerUser, selectIsRegged } from '../../redux/slices/loginSlice';
 export default function Register() {
     const navigate = useNavigate();
+    const isRegged = useSelector(selectIsRegged);
     const { error } = useSelector((state) => state.logreg);
     const dispatch = useDispatch();
+    console.log(error);
     const {
         register,
         handleSubmit,
@@ -16,21 +18,26 @@ export default function Register() {
         }
     } = useForm({
         defaultValues: {
-            fname: "",
-            lname: "",
-            patronimic: "",
-            address: "",
-            email: "",
-            password: "",
+            fname: "asf",
+            lname: "asfasf",
+            patronimic: "asfasfaf",
+            address: "asfasf",
+            email: "karpenko@gmail.com",
+            password: "Asd12345678",
         },
         mode: "onChange",
     });
 
     const onSubmit = (values) => {
         dispatch(registerUser(values));
-        navigate('/sign-in');
 
     }
+    console.log(isRegged);
+    useEffect(() => {
+        if (isRegged) {
+            navigate('/sign-in')
+        }
+    }, [isRegged, navigate])
     return (
         <div className={`${myRegister.login}`}>
             <form className={`${myRegister['login-form']}`} onSubmit={handleSubmit(onSubmit)}>

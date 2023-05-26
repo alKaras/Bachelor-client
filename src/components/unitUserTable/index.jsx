@@ -1,5 +1,6 @@
 import React from 'react'
 import { Table } from 'react-bootstrap';
+import Moment from 'react-moment';
 export default function UnitUserTable({ units, loaded }) {
     return (
 
@@ -16,7 +17,7 @@ export default function UnitUserTable({ units, loaded }) {
                         return (
                             <tr key={index} className='text-center'>
                                 <td>{unit.unitNo}</td>
-                                <td>{unit.formattedDate}</td>
+                                <td><Moment format='DD-MM-YYYY' >{unit.date}</Moment></td>
                             </tr>
                         )
 

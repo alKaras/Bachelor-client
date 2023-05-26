@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import myHeader from './Header.module.scss';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
-import { infoAboutUser, logout, selectIsAdmin, selectIsLogged } from '../../redux/slices/loginSlice';
+import { infoAboutUser, logout, selectIsLogged } from '../../redux/slices/loginSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const Colors = {
@@ -12,17 +12,17 @@ const Colors = {
 }
 export default function Header() {
     const isLogged = useSelector(selectIsLogged);
-    const isAdmin = useSelector(selectIsAdmin);
     const user = useSelector(infoAboutUser);
     const location = useLocation();
     const isGuestHome = (location.pathname === '/');
+    const isGuestService = (location.pathname === '/service');
+    const isGuestPrices = (location.pathname === '/prices');
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const logOutHandler = () => {
         dispatch(logout());
         window.localStorage.removeItem("token");
         navigate('/');
-
     }
     return (
         <Navbar expand="md" className={`${myHeader.root} d-flex justify-content-between`} >
@@ -36,7 +36,7 @@ export default function Header() {
                     <p className={myHeader['brand-text']}>Sum<span style={{ color: Colors.Brand }}>Energo</span></p>
                 </Navbar.Brand>
             </LinkContainer>
-            {isLogged && !isGuestHome ? (
+            {isLogged && !isGuestHome && !isGuestService && !isGuestPrices ? (
                 <>
                     <Nav>
                         <Dropdown align="end">
@@ -44,10 +44,16 @@ export default function Header() {
                                 <h1 className='mb-0 me-1'>{user.fname} {user.lname}</h1>
                             </Dropdown.Toggle>
                             <Dropdown.Menu className='mt-3 p-3'>
-                                {isAdmin ? (
+                                {user.role === "admin" ? (
                                     <>
                                         <LinkContainer className={`${myHeader['drop-link']}`} to='/adminCabinet'>
                                             <Dropdown.Item>Кабінет</Dropdown.Item>
+                                        </LinkContainer>
+                                        <LinkContainer className={`${myHeader['drop-link']}`} to='/userservice'>
+                                            <Dropdown.Item>Замовлені послуги</Dropdown.Item>
+                                        </LinkContainer>
+                                        <LinkContainer className={`${myHeader['drop-link']}`} to='/user-units'>
+                                            <Dropdown.Item>Передані показники</Dropdown.Item>
                                         </LinkContainer>
                                     </>
                                 ) :
@@ -55,13 +61,14 @@ export default function Header() {
                                         <LinkContainer className={`${myHeader['drop-link']}`} to='/userCabinet'>
                                             <Dropdown.Item >Кабінет</Dropdown.Item>
                                         </LinkContainer>
+                                        <LinkContainer to='/send-unit'>
+                                            <Dropdown.Item className={`${myHeader['drop-link']}`}>Передати показання</Dropdown.Item>
+                                        </LinkContainer>
+                                        <Dropdown.Item href="#/action-2" className={`${myHeader['drop-link']}`}>Послуги</Dropdown.Item>
                                     </>
                                 }
 
-                                <LinkContainer to='/send-unit'>
-                                    <Dropdown.Item className={`${myHeader['drop-link']}`}>Передати показання</Dropdown.Item>
-                                </LinkContainer>
-                                <Dropdown.Item href="#/action-2" className={`${myHeader['drop-link']}`}>Послуги</Dropdown.Item>
+
                                 <Dropdown.Item onClick={logOutHandler} className={`${myHeader['drop-link']}`}>Вийти</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>

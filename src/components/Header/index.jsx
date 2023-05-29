@@ -27,7 +27,7 @@ export default function Header() {
     return (
         <Navbar expand="md" className={`${myHeader.root} d-flex justify-content-between`} >
 
-            <LinkContainer to={'/'}>
+            <LinkContainer to={'/'} onClick={logOutHandler}>
                 <Navbar.Brand className='d-flex align-items-center'>
                     <img
                         src="/logo.svg"

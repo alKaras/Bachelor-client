@@ -4,6 +4,7 @@ import axios from '../../utils/axios.js';
 const initialState = {
 
     items: [],
+    deletedunit: null,
     itemsall: [],
     isLoading: "loading",
     error: null,
@@ -33,7 +34,14 @@ export const getUnits = createAsyncThunk('units/getUnits', async () => {
     const { data } = await axios.get('/unit/getAllUnits');
     return data;
 })
-
+export const deleteUnitById = createAsyncThunk('units/deleteUnit', async (param, { rejectWithValue }) => {
+    try {
+        const { data } = await axios.delete(`/unit/deleteunit/${param}`);
+        return data;
+    } catch (error) {
+        return rejectWithValue(error.response.data);
+    }
+})
 const unitsSlice = createSlice({
     name: 'units',
     initialState,
@@ -77,6 +85,20 @@ const unitsSlice = createSlice({
                 state.isLoading = "error"
                 state.error = action.error.message
             })
+            .addCase(deleteUnitById.pending, (state) => {
+                state.isLoading = "loading"
+                state.error = null
+            })
+            .addCase(deleteUnitById.fulfilled, (state, action) => {
+                state.isLoading = "loaded"
+                state.deletedunit = action.payload.deletedunit
+                state.error = null
+            })
+            .addCase(deleteUnitById.rejected, (state, action) => {
+                state.isLoading = "error"
+                state.error = action.payload.message
+            })
+
 
     }
 
@@ -85,3 +107,4 @@ const unitsSlice = createSlice({
 export const unitsReducer = unitsSlice.reducer;
 export const infoAboutUnits = (state) => (state.units.items);
 export const infoAboutAllUnits = (state) => (state.units.itemsall);
+export const selectDeletedUnit = (state) => (state.units.deletedunit);

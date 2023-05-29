@@ -3,6 +3,7 @@ import axios from '../../utils/axios.js';
 
 const initialState = {
     user: null,
+    deleteduser: null,
     datausers: [],
     token: null,
     adminrole: false,
@@ -32,7 +33,7 @@ export const registerUser = createAsyncThunk('login/registerUser', async (params
     }
 })
 
-export const getUser = createAsyncThunk('login/getUser', async (_, {rejectWithValue }) => {
+export const getUser = createAsyncThunk('login/getUser', async (_, { rejectWithValue }) => {
     try {
         const { data } = await axios.get('/user/getUser');
         return data;
@@ -44,6 +45,15 @@ export const getUser = createAsyncThunk('login/getUser', async (_, {rejectWithVa
 export const getUsers = createAsyncThunk('login/getUsers', async () => {
     const { data } = await axios.get('/user/getUsers');
     return data;
+})
+
+export const deleteUser = createAsyncThunk('login/deleteUser', async (param, { rejectWithValue }) => {
+    try {
+        const {data} = await axios.delete(`/user/deleteuser/${param}`);
+        return data;
+    } catch (error) {
+        return rejectWithValue(error.response.data);
+    }
 })
 
 const loginSlice = createSlice({
@@ -115,12 +125,27 @@ const loginSlice = createSlice({
             .addCase(getUsers.rejected, (state) => {
                 state.isLoading = 'error'
             })
+            .addCase(deleteUser.pending, (state) => {
+                state.isLoading = 'loading'
+                state.error = null
+            })
+            .addCase(deleteUser.fulfilled, (state, action) => {
+                state.isLoading = 'loaded'
+                state.deleteduser = action.payload.deleteduser
+                state.error = null
+            })
+            .addCase(deleteUser.rejected, (state, action) => {
+                state.isLoading = 'error'
+                state.error = action.payload.message
+            })
 
     }
 })
 export const selectIsRegged = (state) => (state.logreg.isRegistered);
 export const selectIsLogged = (state) => Boolean(state.logreg.token)
 export const selectIsAdmin = (state) => Boolean(state.logreg.adminrole)
+export const selectDeletedInfo = (state) => (state.logreg.deleteduser);
+
 export const infoAboutUser = (state) => (state.logreg.user);
 export const fetchUsers = (state) => (state.logreg.datausers);
 

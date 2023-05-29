@@ -8,6 +8,8 @@ const initialState = {
     itemsall: [],
     isLoading: "loading",
     error: null,
+    isSent: false,
+    sumUnits: null,
 
 };
 
@@ -42,6 +44,10 @@ export const deleteUnitById = createAsyncThunk('units/deleteUnit', async (param,
         return rejectWithValue(error.response.data);
     }
 })
+export const getSumUserUnits = createAsyncThunk('units/getsumusunits', async() => {
+    const {data} = await axios.get('unit/getSumUserUnits');
+    return data;
+})
 const unitsSlice = createSlice({
     name: 'units',
     initialState,
@@ -55,6 +61,7 @@ const unitsSlice = createSlice({
             })
             .addCase(createUnit.fulfilled, (state, action) => {
                 state.isLoading = "loaded"
+                state.isSent = true
             })
             .addCase(createUnit.rejected, (state, action) => {
                 state.isLoading = "error"
@@ -68,6 +75,7 @@ const unitsSlice = createSlice({
             .addCase(getUnitById.fulfilled, (state, action) => {
                 state.isLoading = "loaded"
                 state.items = action.payload.units
+                state.isSent = false
             })
             .addCase(getUnitById.rejected, (state, action) => {
                 state.isLoading = "error"
@@ -98,6 +106,19 @@ const unitsSlice = createSlice({
                 state.isLoading = "error"
                 state.error = action.payload.message
             })
+            .addCase(getSumUserUnits.pending, (state) => {
+                state.isLoading = "loading"
+                state.error = null
+            })
+            .addCase(getSumUserUnits.fulfilled, (state, action) => {
+                state.isLoading = "loaded"
+                state.sumUnits = action.payload.sumunits
+                state.error = null
+            })
+            .addCase(getSumUserUnits.rejected, (state, action) => {
+                state.isLoading = "error"
+                state.error = action.payload.message
+            })
 
 
     }
@@ -108,3 +129,5 @@ export const unitsReducer = unitsSlice.reducer;
 export const infoAboutUnits = (state) => (state.units.items);
 export const infoAboutAllUnits = (state) => (state.units.itemsall);
 export const selectDeletedUnit = (state) => (state.units.deletedunit);
+export const isUnitSent = (state) => (state.units.isSent);
+export const selectSumOfUsUnits = (state) => (state.units.sumUnits)

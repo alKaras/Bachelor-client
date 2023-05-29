@@ -5,7 +5,8 @@ import Footer from '../../components/Footer'
 import mySend from './SendUnits.module.scss';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { createUnit, getUnitById, infoAboutAllUnits, infoAboutUnits } from '../../redux/slices/unitSlice';
+import { createUnit } from '../../redux/slices/unitSlice';
+import UnitUserTable from '../../components/unitUserTable';
 
 export default function SendUnits() {
     const dispatch = useDispatch();
@@ -30,16 +31,11 @@ export default function SendUnits() {
         dispatch(createUnit(values));
         reset({ unitNo: "" })
     }
-    const isUnitsLoading = useSelector((state) => state.units.isLoading === "loaded");
-    useEffect(() => {
-        dispatch(getUnitById());
-    }, [dispatch])
-   
-    const units = useSelector(infoAboutUnits);
 
-    const [prevnum] = useState(0);
+    const [prevnum, setPrevNum] = useState("");
     const [nextnum, setNextnum] = useState("");
     const [result, setResult] = useState("0");
+    
     const usedEnergy = nextnum - prevnum;
     const CalculatePrices = () => {
         if (usedEnergy > 250) {
@@ -54,9 +50,9 @@ export default function SendUnits() {
     return (
         <>
             <Header />
-            <div className={`${mySend['content']} vh-100`}>
+            <div className={`${mySend['content']}`}>
                 <Row>
-                    <Col className="d-flex flex-column align-items-center jusify-content-center">
+                    <Col className="d-flex flex-column align-items-center jusify-content-center mb-4">
                         <h2 className={`${mySend['content-head']} text-center`}>Форма відправки показників</h2>
                         <form onSubmit={handleSubmit(onSubmit)} className={`${mySend['form-send']}`}>
                             <div>
@@ -73,16 +69,17 @@ export default function SendUnits() {
                             {error && <div className={`${mySend.error}`}>{error}</div>
                             }
                         </form>
+                        <UnitUserTable />
                     </Col>
-                    <Col>
+                    <Col className='d-flex flex-column align-items-center'>
                         <h2 className={`${mySend['content-head']} text-center`}>Калькулятор тарифів</h2>
                         <div className={`${mySend['form-send']}`}>
                             <div className='d-flex flex-column'>
                                 <label>Попередній показник</label>
                                 <input
                                     type="number"
-                                    value={isUnitsLoading ? (units[units.length - 1].unitNo) : ""}
-                                    disabled
+                                    value={prevnum}
+                                    onChange={(e) => setPrevNum(e.target.value)}
                                 />
                                 {prevnum < 0 && <div className={`${mySend['error-style']}`}>Некоректний формат</div>}
                             </div>

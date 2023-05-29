@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import './index.css';
 import Home from './pages/Home';
-import Service from './pages/Service';
 import Login from './pages/Login';
 import UserCabinet from './pages/UserCabinet';
 import AdminCabinet from './pages/AdminCabinet';
@@ -11,6 +10,7 @@ import { useEffect } from 'react';
 import { getUser } from './redux/slices/loginSlice';
 import Register from './pages/Register';
 import UsersUnits from './pages/UsersUnits';
+import UserService from './pages/UserService';
 
 export default function App() {
     const dispatch = useDispatch();
@@ -21,13 +21,14 @@ export default function App() {
         <div className="_container">
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/service' element={<Service />} />
+                {/* <Route path='/service' element={<Service />} /> */}
                 <Route path='/sign-in' element={<Login />} />
                 <Route path='/sign-up' element={<Register />} />
                 <Route path='/adminCabinet' element={<AdminCabinet />} />
                 <Route path='/userCabinet' element={<UserCabinet />} />
                 <Route path='/send-unit' element={<SendUnits />} />
                 <Route path='/user-units' element={<UsersUnits />} />
+                <Route path='/order-service' element={<UserService />} />
             </Routes>
         </div>
     );

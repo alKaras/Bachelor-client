@@ -64,7 +64,7 @@ export default function Header() {
                                         <LinkContainer to='/send-unit'>
                                             <Dropdown.Item className={`${myHeader['drop-link']}`}>Передати показання</Dropdown.Item>
                                         </LinkContainer>
-                                        <Dropdown.Item href="#/action-2" className={`${myHeader['drop-link']}`}>Послуги</Dropdown.Item>
+                                        <LinkContainer to={'/order-service'}><Dropdown.Item href="#/action-2" className={`${myHeader['drop-link']}`}>Послуги</Dropdown.Item></LinkContainer>
                                     </>
                                 }
 

@@ -8,6 +8,7 @@ const initialState = {
     adminrole: false,
     isLoading: 'loading',
     error: null,
+    isRegistered: false,
 }
 
 export const loginUser = createAsyncThunk('login/loginUser', async (params, { _, rejectWithValue }) => {
@@ -25,19 +26,18 @@ export const loginUser = createAsyncThunk('login/loginUser', async (params, { _,
 export const registerUser = createAsyncThunk('login/registerUser', async (params, { rejectWithValue }) => {
     try {
         const { data } = await axios.post('/user/register', params);
-
         return data;
     } catch (error) {
         return rejectWithValue(error.response.data);
     }
 })
 
-export const getUser = createAsyncThunk('login/getUser', async (_, { rejectWithValue }) => {
+export const getUser = createAsyncThunk('login/getUser', async (_, {rejectWithValue }) => {
     try {
         const { data } = await axios.get('/user/getUser');
         return data;
     } catch (error) {
-        rejectWithValue(error.response.data)
+        return rejectWithValue(error.response.data)
     }
 })
 
@@ -68,6 +68,7 @@ const loginSlice = createSlice({
                 state.isLoading = 'loaded'
                 state.user = action.payload.user
                 state.error = null
+                state.isRegistered = true
             })
             .addCase(registerUser.rejected, (state, action) => {
                 state.isLoading = 'error'
@@ -108,7 +109,7 @@ const loginSlice = createSlice({
                 state.isLoading = 'loading'
             })
             .addCase(getUsers.fulfilled, (state, action) => {
-                state.isLoading = 'loaded'
+                state.isLoading = "loaded"
                 state.datausers = action.payload.users
             })
             .addCase(getUsers.rejected, (state) => {
@@ -117,7 +118,7 @@ const loginSlice = createSlice({
 
     }
 })
-export const selectIsRegged = (state) => Boolean(state.logreg.user);
+export const selectIsRegged = (state) => (state.logreg.isRegistered);
 export const selectIsLogged = (state) => Boolean(state.logreg.token)
 export const selectIsAdmin = (state) => Boolean(state.logreg.adminrole)
 export const infoAboutUser = (state) => (state.logreg.user);

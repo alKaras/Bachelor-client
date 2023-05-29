@@ -17,6 +17,7 @@ export default function UserCabinet() {
     }, [dispatch])
     const data = useSelector(infoAboutUnits);
     console.log(data);
+    console.log(isUnitsLoading);
     return (
         <>
             <Header />

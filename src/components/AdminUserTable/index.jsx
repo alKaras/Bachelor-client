@@ -1,6 +1,12 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 export default function AdminUserTable({ users, loaded }) {
+    const findID = (id) => {
+        console.log(id);
+    }
     return (
         <Table striped bordered hover>
             <thead className='text-center'>
@@ -24,7 +30,7 @@ export default function AdminUserTable({ users, loaded }) {
                                 <td>{obj.email}</td>
                                 <td>{obj.role}</td>
                                 <td>
-                                    <button className='btn btn-warning'>
+                                    <button onClick={() => findID(obj._id)} className='btn btn-warning'>
                                         Видалити
                                     </button>
                                 </td>

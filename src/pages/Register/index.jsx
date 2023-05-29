@@ -18,12 +18,12 @@ export default function Register() {
         }
     } = useForm({
         defaultValues: {
-            fname: "asf",
-            lname: "asfasf",
-            patronimic: "asfasfaf",
-            address: "asfasf",
-            email: "karpenko@gmail.com",
-            password: "Asd12345678",
+            fname: "",
+            lname: "",
+            patronimic: "",
+            address: "",
+            email: "",
+            password: "",
         },
         mode: "onChange",
     });
@@ -32,7 +32,6 @@ export default function Register() {
         dispatch(registerUser(values));
 
     }
-    console.log(isRegged);
     useEffect(() => {
         if (isRegged) {
             navigate('/sign-in')

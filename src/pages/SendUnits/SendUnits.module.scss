@@ -13,6 +13,11 @@
         border-radius: 15px;
         margin-top: 50px;
         box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+
+    }
+    input:disabled {
+        width: 100px;
+        
     }
     input {
         width: 300px;

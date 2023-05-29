@@ -22,6 +22,8 @@ export default function UnitsAllTable() {
         console.log(unitID);
         dispatch(deleteUnitById(unitID));
     }
+
+    
     return (
         <Table striped bordered hover>
             <thead className='text-center'>

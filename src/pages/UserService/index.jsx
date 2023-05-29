@@ -19,9 +19,7 @@ export default function UserService() {
 
     const onSubmit = (values) => {
         dispatch(createReqService(values));
-
     }
-    
 
     const {
         register,

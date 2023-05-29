@@ -7,7 +7,7 @@ import { getSumUserUnits, selectSumOfUsUnits } from '../../redux/slices/unitSlic
 
 export default function UserCabinet() {
     const dispatch = useDispatch();
-    const isLoaded = useSelector((state) => state.units.isLoading);
+    const isLoaded = useSelector((state) => state.units.isLoading === 'loaded');
     const sum = useSelector(selectSumOfUsUnits);
     useEffect(() => {
         dispatch(getSumUserUnits());

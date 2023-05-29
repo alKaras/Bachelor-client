@@ -8,6 +8,7 @@ const initialState = {
     isLoading: "loading",
     error: null,
     statussend: false,
+    loadsumserv: false,
 };
 
 export const createReqService = createAsyncThunk('service/createReqServ', async (params, { rejectWithValue }) => {

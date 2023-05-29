@@ -10,6 +10,8 @@ const initialState = {
     error: null,
     isSent: false,
     sumUnits: null,
+    sumallun: null,
+    statusloadsumall: false,
 
 };
 
@@ -36,6 +38,7 @@ export const getUnits = createAsyncThunk('units/getUnits', async () => {
     const { data } = await axios.get('/unit/getAllUnits');
     return data;
 })
+
 export const deleteUnitById = createAsyncThunk('units/deleteUnit', async (param, { rejectWithValue }) => {
     try {
         const { data } = await axios.delete(`/unit/deleteunit/${param}`);
@@ -44,8 +47,13 @@ export const deleteUnitById = createAsyncThunk('units/deleteUnit', async (param,
         return rejectWithValue(error.response.data);
     }
 })
-export const getSumUserUnits = createAsyncThunk('units/getsumusunits', async() => {
-    const {data} = await axios.get('unit/getSumUserUnits');
+export const getSumUserUnits = createAsyncThunk('units/getsumusunits', async () => {
+    const { data } = await axios.get('unit/getSumUserUnits');
+    return data;
+})
+
+export const getSumAllUnits = createAsyncThunk('units/getsumallunits', async () => {
+    const { data } = await axios.get('unit/getsumallunits');
     return data;
 })
 const unitsSlice = createSlice({
@@ -119,6 +127,19 @@ const unitsSlice = createSlice({
                 state.isLoading = "error"
                 state.error = action.payload.message
             })
+            .addCase(getSumAllUnits.pending, (state) => {
+                state.isLoading = "loading"
+                state.error = null
+            })
+            .addCase(getSumAllUnits.fulfilled, (state, action) => {
+                state.isLoading = "loaded"
+                state.sumallun = action.payload.sumalunits
+                state.error = null
+            })
+            .addCase(getSumAllUnits.rejected, (state, action) => {
+                state.isLoading = "error"
+                state.error = action.payload.message
+            })
 
 
     }
@@ -130,4 +151,5 @@ export const infoAboutUnits = (state) => (state.units.items);
 export const infoAboutAllUnits = (state) => (state.units.itemsall);
 export const selectDeletedUnit = (state) => (state.units.deletedunit);
 export const isUnitSent = (state) => (state.units.isSent);
-export const selectSumOfUsUnits = (state) => (state.units.sumUnits)
+export const selectSumOfUsUnits = (state) => (state.units.sumUnits);
+export const selectSumOfAllUnits = (state) => (state.units.sumallun);

@@ -125,7 +125,7 @@ const unitsSlice = createSlice({
             })
             .addCase(getSumUserUnits.rejected, (state, action) => {
                 state.isLoading = "error"
-                state.error = action.payload.message
+                // state.error = action.payload.message
             })
             .addCase(getSumAllUnits.pending, (state) => {
                 state.isLoading = "loading"

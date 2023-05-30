@@ -10,6 +10,7 @@ const initialState = {
     statussend: false,
     loadsumserv: false,
     updated: false,
+    deletedserv: null,
 };
 
 export const createReqService = createAsyncThunk('service/createReqServ', async (params, { rejectWithValue }) => {
@@ -37,7 +38,16 @@ export const getUserServices = createAsyncThunk('service/getUserServices', async
 
 export const updateStatusService = createAsyncThunk('service/updateStatus', async (param, { rejectWithValue }) => {
     try {
-        const { data } = axios.put(`/service/updateStatus/${param}`);
+        const { data } = await axios.put(`/service/updateStatus/${param}`);
+        return data;
+    } catch (error) {
+        return rejectWithValue(error.response.data);
+    }
+})
+
+export const deleteService = createAsyncThunk('service/deleteService', async (param, { rejectWithValue }) => {
+    try {
+        const { data } = await axios.delete(`/service/deleteService/${param}`);
         return data;
     } catch (error) {
         return rejectWithValue(error.response.data);
@@ -103,13 +113,25 @@ const serviceSlice = createSlice({
                 state.error = action.payload.message
                 state.isLoading = 'error'
             })
-
-
+            .addCase(deleteService.pending, (state) => {
+                state.error = null
+                state.isLoading = 'loading'
+            })
+            .addCase(deleteService.fulfilled, (state, action) => {
+                state.error = null
+                state.deletedserv = action.payload.deleted
+            })
+            .addCase(deleteService.rejected, (state, action) => {
+                state.error = action.payload.message
+                state.isLoading = 'error'
+            })
     }
 })
 
 export const UserServicesInfo = (state) => (state.services.servid);
 export const ServicesInfo = (state) => (state.services.servall);
 export const isUpdated = (state) => (state.services.updated);
+export const isDeleted = (state) => (state.services.deletedserv);
+
 export const ServiceReducer = serviceSlice.reducer;
 

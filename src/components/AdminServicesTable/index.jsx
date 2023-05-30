@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
-import { ServicesInfo, getAllServices, isUpdated, updateStatusService } from '../../redux/slices/serviceSlice';
+import { ServicesInfo, deleteService, getAllServices, isDeleted, isUpdated, updateStatusService } from '../../redux/slices/serviceSlice';
 import Moment from 'react-moment';
 
 export default function AdminServicesTable() {
@@ -9,16 +9,20 @@ export default function AdminServicesTable() {
     const services = useSelector(ServicesInfo);
     const loaded = useSelector((state) => state.services.isLoading === 'loaded');
     const updated = useSelector(isUpdated);
+    const deleted = useSelector(isDeleted);
     const handleUpdate = (servId) => {
         dispatch(updateStatusService(servId))
+    }
+    const handleDelete = (servId) => {
+        dispatch(deleteService(servId));
     }
     useEffect(() => {
         dispatch(getAllServices());
 
-        if (updated){
+        if (updated || deleted) {
             dispatch(getAllServices());
         }
-    }, [dispatch, updated]);
+    }, [dispatch, updated, deleted]);
     return (
         <Table striped bordered hover>
             <thead className='text-center'>
@@ -29,6 +33,7 @@ export default function AdminServicesTable() {
                     <th>Статус</th>
                     <th>Дата надіслення</th>
                     <th>Зміна статуса</th>
+                    <th>Видалення</th>
                 </tr>
             </thead>
             <tbody className='text-center'>
@@ -53,6 +58,9 @@ export default function AdminServicesTable() {
                                                 Підтвердити
                                             </button>
                                         </td>
+                                        <td>
+                                            <button onClick={() => handleDelete(obj._id)} className='btn btn-danger'>Видалити</button>
+                                        </td>
                                     </>
                                     :
                                     <>
@@ -60,6 +68,9 @@ export default function AdminServicesTable() {
                                             <button disabled className='btn btn-warning'>
                                                 Підтвердити
                                             </button>
+                                        </td>
+                                        <td>
+                                            <button disabled className='btn btn-danger'>Видалити</button>
                                         </td>
                                     </>
                                 }
@@ -76,6 +87,9 @@ export default function AdminServicesTable() {
                                 <button className='btn btn-warning'>
                                     Підтвердити
                                 </button>
+                            </td>
+                            <td>
+                                <button className='btn btn-danger'>Видалити</button>
                             </td>
                         </tr>
                 }

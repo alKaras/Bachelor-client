@@ -10,6 +10,7 @@ const initialState = {
     isLoading: 'loading',
     error: null,
     isRegistered: false,
+    amountusers: null,
 }
 
 export const loginUser = createAsyncThunk('login/loginUser', async (params, { _, rejectWithValue }) => {
@@ -49,11 +50,16 @@ export const getUsers = createAsyncThunk('login/getUsers', async () => {
 
 export const deleteUser = createAsyncThunk('login/deleteUser', async (param, { rejectWithValue }) => {
     try {
-        const {data} = await axios.delete(`/user/deleteuser/${param}`);
+        const { data } = await axios.delete(`/user/deleteuser/${param}`);
         return data;
     } catch (error) {
         return rejectWithValue(error.response.data);
     }
+})
+
+export const getAmountUsers = createAsyncThunk('login/getAmount', async () => {
+    const { data } = await axios.get('/user/getamount');
+    return data;
 })
 
 const loginSlice = createSlice({
@@ -138,7 +144,19 @@ const loginSlice = createSlice({
                 state.isLoading = 'error'
                 state.error = action.payload.message
             })
-
+            .addCase(getAmountUsers.pending, (state) =>{
+                state.isLoading = 'loading'
+                state.error = null
+            })
+            .addCase(getAmountUsers.fulfilled, (state, action) =>{
+                state.isLoading = 'loaded'
+                state.amountusers = action.payload.amount
+                state.error = null
+            })
+            .addCase(getAmountUsers.rejected, (state, action) =>{
+                state.isLoading = 'error'
+                state.error = action.payload.message
+            })
     }
 })
 export const selectIsRegged = (state) => (state.logreg.isRegistered);
@@ -148,6 +166,8 @@ export const selectDeletedInfo = (state) => (state.logreg.deleteduser);
 
 export const infoAboutUser = (state) => (state.logreg.user);
 export const fetchUsers = (state) => (state.logreg.datausers);
+
+export const selectAmount = (state) => (state.logreg.amountusers);
 
 export const { logout } = loginSlice.actions;
 

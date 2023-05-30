@@ -17,7 +17,6 @@ export default function AdminUserTable() {
         if (deletedUser) {
             dispatch(getUsers());
         }
-
     }, [dispatch, deletedUser])
     return (
         <Table striped bordered hover>

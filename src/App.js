@@ -11,6 +11,7 @@ import { getUser } from './redux/slices/loginSlice';
 import Register from './pages/Register';
 import UsersUnits from './pages/UsersUnits';
 import UserService from './pages/UserService';
+import AdminService from './pages/AdminService';
 
 export default function App() {
     const dispatch = useDispatch();
@@ -29,6 +30,7 @@ export default function App() {
                 <Route path='/send-unit' element={<SendUnits />} />
                 <Route path='/user-units' element={<UsersUnits />} />
                 <Route path='/order-service' element={<UserService />} />
+                <Route path='/userservice' element={<AdminService />} />
             </Routes>
         </div>
     );

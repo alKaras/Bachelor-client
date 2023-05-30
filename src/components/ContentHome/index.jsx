@@ -2,11 +2,12 @@ import React from 'react'
 import { Row, Col, Button } from 'react-bootstrap';
 import myContentHome from './ContentHome.module.scss';
 import { Link } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
 
 export default function ContentHome() {
     return (
         <div >
-            <Row className={`${myContentHome.root} align-items-center vh-100`}>
+            <Row className={`${myContentHome.root} align-items-center`}>
                 <Col className={`${myContentHome['content']}`}>
                     <h1 className={`${myContentHome['head-text']}`}>
                         Набридли проблеми з електропостачанням?
@@ -14,7 +15,16 @@ export default function ContentHome() {
                     <p className={`${myContentHome['body-text']}`}>
                         Не витрачайте свій час на пошук надійного постачальника електроенергії - приєднуйтеся до нашої спільноти задоволених клієнтів вже сьогодні.
                     </p>
-                    <Button className='btn btn-primary'>Дізнатись більше</Button>
+                    <ScrollLink
+                        activeClass='active'
+                        to='about'
+                        spy={true}
+                        smooth={true}
+                        offset={-70}
+                        duration={100}
+                    >
+                        <Button className='btn btn-primary'>Дізнатись більше</Button>
+                    </ScrollLink>
                 </Col>
                 <Col className='d-flex justify-content-center'>
                     <Link
@@ -30,7 +40,7 @@ export default function ContentHome() {
                     </Link>
                 </Col>
             </Row>
-            <div className={`${myContentHome.about}`}>
+            <div className={`${myContentHome.about}`} id='about'>
                 <h2 className={`${myContentHome['head-text']}`}>Про компанію</h2>
                 <p className={`${myContentHome['about-text']}`}>
                     Ми забезпечуємо надійне та безперебійне постачання електроенергії для вашого дому та бізнесу.

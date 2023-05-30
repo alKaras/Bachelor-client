@@ -106,7 +106,8 @@ export default function Register() {
 
                     <div className='d-flex justify-content-between align-items-center'>
                         <button type="submit" className='btn btn-primary'>Зареєструватись</button>
-                        <Link to={'/sign-in'}>Маєте акаунт? Просто увійдіть</Link>
+                        <Link to={'/sign-in'}>Увійти в кабінет</Link>
+                        <Link to={'/'}>На головну</Link>
                     </div>
 
                     {error && <div className={`${myRegister.error}`}>{error}</div>}

@@ -17,6 +17,7 @@ export default function Header() {
     const isGuestHome = (location.pathname === '/');
     const isGuestService = (location.pathname === '/service');
     const isGuestPrices = (location.pathname === '/prices');
+    const isLogRegPage = (location.pathname === '/sign-in' || location.pathname === '/sign-up');
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const logOutHandler = () => {
@@ -36,7 +37,7 @@ export default function Header() {
                     <p className={myHeader['brand-text']}>Sum<span style={{ color: Colors.Brand }}>Energo</span></p>
                 </Navbar.Brand>
             </LinkContainer>
-            {isLogged && !isGuestHome && !isGuestService && !isGuestPrices ? (
+            {isLogged && !isGuestHome && !isGuestService && !isGuestPrices && !isLogRegPage ? (
                 <>
                     <Nav>
                         <Dropdown align="end">

@@ -13,6 +13,7 @@ import UsersUnits from './pages/UsersUnits';
 import UserService from './pages/UserService';
 import AdminService from './pages/AdminService';
 import Support from './pages/Support';
+import ServicePage from './pages/ServicePage';
 
 export default function App() {
     const dispatch = useDispatch();
@@ -32,6 +33,7 @@ export default function App() {
                 <Route path='/order-service' element={<UserService />} />
                 <Route path='/userservice' element={<AdminService />} />
                 <Route path='/support' element={<Support />} />
+                <Route path='/service' element={<ServicePage />} />
             </Routes>
         </div>
     );

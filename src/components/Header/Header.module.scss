@@ -29,10 +29,9 @@
     .btn-login {
         order: 2;
         justify-self: flex-end !important;
-
+        color: #fff;
         @media (max-width: 767px) {
             order: 0;
-            
         }
     }
     .drop-link {

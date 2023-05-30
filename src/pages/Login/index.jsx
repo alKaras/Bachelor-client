@@ -55,7 +55,6 @@ export default function Login() {
     }
 
     return (
-
         <div className={`${myLogin.login}`}>
             <form className={`${myLogin['login-form']}`} onSubmit={handleSubmit(onSubmit)}>
                 <div className={`${myLogin['auth-form-content']}`}>
@@ -85,7 +84,8 @@ export default function Login() {
 
                     <div className='d-flex justify-content-between align-items-center'>
                         <button type="submit" className='btn btn-primary'>Увійти</button>
-                        <Link to={'/sign-up'}>Не маєте акаунту. Зареєструйтесь</Link>
+                        <Link className='ms-3' to={'/sign-up'}>Зареєструватися</Link>
+                        <Link className='ms-3'  to={'/'}>Повернутись на головну</Link>
                     </div>
 
                     {error && <div className={`${myLogin.error}`}>{error}</div>}

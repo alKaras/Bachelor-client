@@ -93,8 +93,8 @@ export default function Header() {
                             <LinkContainer to={'/service'} >
                                 <Nav.Link className={`${myHeader['nav-text']}`}>Послуги</Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to={'/prices'} >
-                                <Nav.Link className={`${myHeader['nav-text']}`}>Тарифи</Nav.Link>
+                            <LinkContainer to={'/support'} >
+                                <Nav.Link className={`${myHeader['nav-text']}`}>Підтримка</Nav.Link>
                             </LinkContainer>
                         </Nav>
                     </NavbarCollapse>

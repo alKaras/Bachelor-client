@@ -12,6 +12,7 @@ import Register from './pages/Register';
 import UsersUnits from './pages/UsersUnits';
 import UserService from './pages/UserService';
 import AdminService from './pages/AdminService';
+import Support from './pages/Support';
 
 export default function App() {
     const dispatch = useDispatch();
@@ -22,7 +23,6 @@ export default function App() {
         <div className="_container">
             <Routes>
                 <Route path='/' element={<Home />} />
-                {/* <Route path='/service' element={<Service />} /> */}
                 <Route path='/sign-in' element={<Login />} />
                 <Route path='/sign-up' element={<Register />} />
                 <Route path='/adminCabinet' element={<AdminCabinet />} />
@@ -31,6 +31,7 @@ export default function App() {
                 <Route path='/user-units' element={<UsersUnits />} />
                 <Route path='/order-service' element={<UserService />} />
                 <Route path='/userservice' element={<AdminService />} />
+                <Route path='/support' element={<Support />} />
             </Routes>
         </div>
     );

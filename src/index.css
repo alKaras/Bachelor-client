@@ -57,3 +57,31 @@ body {
 ._container {
     overflow: hidden;
 }
+
+.react-chatbot-kit-chat-header {
+    text-align: center !important;
+    font-size: 12px !important;
+    color: #fff !important;
+    background-color: #0ba9f3 !important;
+}
+.react-chatbot-kit-chat-container {
+    width: 600px !important;
+}
+.react-chatbot-kit-chat-inner-container{
+    width: 600px !important;
+}
+.react-chatbot-kit-chat-bot-message{
+    margin: 0 !important;
+    font-size: 14px !important;
+    width: 300px !important;
+}
+.react-chatbot-kit-chat-input {
+    outline: none !important;
+    font-size: 14px !important;
+}
+.react-chatbot-kit-chat-input:focus {
+    outline: 1px solid #61B4D9 !important;
+}
+.react-chatbot-kit-chat-bot-message {
+    white-space: pre-line !important;
+}

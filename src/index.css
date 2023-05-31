@@ -64,24 +64,70 @@ body {
     color: #fff !important;
     background-color: #0ba9f3 !important;
 }
+
 .react-chatbot-kit-chat-container {
     width: 600px !important;
 }
-.react-chatbot-kit-chat-inner-container{
-    width: 600px !important;
+
+@media screen and (max-width: 767px) {
+    .react-chatbot-kit-chat-container {
+        width: 300px !important;
+    }
+
+    .react-chatbot-kit-chat-inner-container {
+        width: 300px !important;
+    }
 }
-.react-chatbot-kit-chat-bot-message{
+
+.react-chatbot-kit-chat-bot-message {
     margin: 0 !important;
     font-size: 14px !important;
     width: 300px !important;
 }
+
 .react-chatbot-kit-chat-input {
     outline: none !important;
     font-size: 14px !important;
 }
+
+@media screen and (max-width: 767px) {
+    .react-chatbot-kit-chat-bot-message {
+        margin: 0 !important;
+        font-size: 12px !important;
+    }
+
+    .react-chatbot-kit-chat-input {
+        outline: none !important;
+        font-size: 12px !important;
+    }
+
+}
+
 .react-chatbot-kit-chat-input:focus {
     outline: 1px solid #61B4D9 !important;
 }
+
 .react-chatbot-kit-chat-bot-message {
     white-space: pre-line !important;
+}
+
+@media (max-width: 767px) {
+    .navbar-nav .dropdown-menu {
+        position: absolute;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    td,
+    th {
+        font-size: calc(10px + (4 + 4 * 0.7) * ((100vw - 320px) / 1280));
+        padding: 0 !important;
+    }
+
+    .btn.btn-warning {
+        font-size: calc(10px + (4 + 4 * 0.7) * ((100vw - 320px) / 1280));
+    }
+
 }

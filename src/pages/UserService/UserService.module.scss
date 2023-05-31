@@ -4,12 +4,22 @@
     .title {
         font-size: 24px;
         margin-bottom: 25px;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(18px + (6 + 6 * 0.7) * ((100vw - 320px) / 1260));
+            text-align: center;
+        }
     }
     .body {
         font-size: 18px;
         max-width: 800px;
         line-height: 150%;
         margin-bottom: 25px;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(16px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+            text-align: center;
+        }
     }
 
     .cta {
@@ -19,10 +29,18 @@
         font-size: 20px;
         color: rgb(23, 23, 244);
 
+        @media screen and (max-width: 767px) {
+            font-size: calc(16px + (4 + 4 * 0.7) * ((100vw - 320px) / 1260));
+        }
+
         span {
             display: block;
             margin-top: 10px;
             color: #fff;
+
+            @media screen and (max-width: 767px) {
+                font-size: calc(14px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+            }
         }
     }
     .service-form {
@@ -43,15 +61,31 @@
         font-size: 24px;
         color: rgb(34, 34, 34);
         font-weight: 800;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(16px + (8 + 8 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
 
     label {
         font-size: 16px;
         font-weight: 600;
         color: rgb(34, 34, 34);
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(14px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
 
-    input, select {
+    button,
+    a {
+        @media screen and (max-width: 767px) {
+            font-size: calc(10px + (4 + 4 * 0.7) * ((100vw - 320px) / 1260));
+        }
+    }
+
+    input,
+    select {
         flex: none;
         padding: 10px;
         font-size: 16px;
@@ -59,10 +93,15 @@
         border-radius: 8px;
         outline: 0;
         margin: 20px 0;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(12px + (4 + 4 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
 
-    input:focus, select:focus {
-        outline: 1px solid #3742C9;
+    input:focus,
+    select:focus {
+        outline: 1px solid #3742c9;
     }
     .error-style {
         color: red;
@@ -83,6 +122,5 @@
         font-weight: bold;
         text-align: center;
         margin-top: 10px;
-
     }
 }

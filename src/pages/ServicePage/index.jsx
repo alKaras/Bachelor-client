@@ -13,8 +13,8 @@ export default function ServicePage() {
                     <p className={`${servicepage['body-text']}`}>
                         Наша компанія надає низку послуг, які можуть задовольнити ваші потреби <br />
                     </p>
-                    <Row className='d-flex align-items-center gap-5 mb-5'>
-                        <Col className={`${servicepage['card-service']} d-flex flex-column align-items-center`}>
+                    <Row className='d-flex align-items-center justify-content-center gap-4 mb-5'>
+                        <Col lg={3} md={12} sm={12} xs={12} className={`${servicepage['card-service']} d-flex flex-column align-items-center`}>
                             <img src="images/sunpanels.jpg" className='img-fluid' alt="sunpanels" />
                             <div className={`${servicepage['card-title']}`}>Встановлення сонячних панелей</div>
                             <div className={`${servicepage['card-body']}`}>
@@ -24,7 +24,7 @@ export default function ServicePage() {
                                 Ціна послуги: <span className={`${servicepage['card-price']}`}>2000</span>
                             </div>
                         </Col>
-                        <Col className={`${servicepage['card-service']} d-flex flex-column align-items-center`}>
+                        <Col lg={3} md={12} sm={12} xs={12} className={`${servicepage['card-service']} d-flex flex-column align-items-center`}>
                             <img src="images/powerconnect.jpg" className='img-fluid' alt="sunpanels" />
                             <div className={`${servicepage['card-title']}`}>Відключення електроенергії та лічильника</div>
                             <div className={`${servicepage['card-body']}`}>
@@ -34,7 +34,7 @@ export default function ServicePage() {
                                 Ціна послуги: <span className={`${servicepage['card-price']}`}>500</span>
                             </div>
                         </Col>
-                        <Col className={`${servicepage['card-service']} d-flex flex-column align-items-center`}>
+                        <Col lg={3} md={12} sm={12} xs={12} className={`${servicepage['card-service']} d-flex flex-column align-items-center`}>
                             <img src="images/powercut.jpg" className='img-fluid' alt="sunpanels" />
                             <div className={`${servicepage['card-title']}`}>Встановлення та налаштування лічильника</div>
                             <div className={`${servicepage['card-body']}`}>

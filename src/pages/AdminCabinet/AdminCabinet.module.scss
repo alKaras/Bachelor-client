@@ -1,10 +1,18 @@
 .root {
     padding: 50px 60px;
 
+    @media screen and (max-width: 767px) {
+        padding: 25px 30px;
+        
+    }
     .cab-head {
         font-size: 24px;
         color: white;
         margin-bottom: 25px;
+        @media screen and (max-width: 767px) {
+            font-size: calc(16px + (8 + 8 * 0.7) * ((100vw - 320px) / 1260));
+            
+        }
     }
 
     .cab-body {
@@ -12,5 +20,9 @@
         color: white;
         margin-bottom: 15px;
 
+        @media screen and (max-width: 767px) {
+            font-size: calc(14px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+            
+        }
     }
 }

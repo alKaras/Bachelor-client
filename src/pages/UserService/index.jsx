@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Header from '../../components/Header'
 import userservice from './UserService.module.scss';
-import Footer from '../../components/Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { infoAboutUser } from '../../redux/slices/loginSlice';
 import { useForm } from 'react-hook-form';
@@ -133,7 +132,6 @@ export default function UserService() {
                     </div>
                 </div>
             </div >
-            <Footer />
         </>
     )
 }

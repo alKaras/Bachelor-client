@@ -7,8 +7,8 @@ import { Link as ScrollLink } from 'react-scroll';
 export default function ContentHome() {
     return (
         <div >
-            <Row className={`${myContentHome.root} align-items-center`}>
-                <Col className={`${myContentHome['content']}`}>
+            <Row className={`${myContentHome.root} d-flex align-items-center`}>
+                <Col lg={6} md={6} sm={12} xs={12} className={`${myContentHome['content']}`}>
                     <h1 className={`${myContentHome['head-text']}`}>
                         Набридли проблеми з електропостачанням?
                     </h1>
@@ -23,10 +23,10 @@ export default function ContentHome() {
                         offset={-70}
                         duration={100}
                     >
-                        <Button className='btn btn-primary'>Дізнатись більше</Button>
+                        <Button className={`btn btn-primary`}>Дізнатись більше</Button>
                     </ScrollLink>
                 </Col>
-                <Col className='d-flex justify-content-center'>
+                <Col lg={6} md={6} sm={12} xs={12} className='d-flex align-items-center'>
                     <Link
                         to={'https://bank.gov.ua/ua/about/support-the-armed-forces'}
                         className={`${myContentHome['img-back']}`}
@@ -46,8 +46,8 @@ export default function ContentHome() {
                     Ми забезпечуємо надійне та безперебійне постачання електроенергії для вашого дому та бізнесу.
                     Наша команда фахівців працює цілодобово, щоб забезпечити максимальний комфорт та безпеку для наших клієнтів.
                 </p>
-                <Row>
-                    <Col>
+                <Row className={`${myContentHome.cards}`}>
+                    <Col lg={4} md={12} sm={12} xs={12}>
                         <div className={`${myContentHome['speed-card']} d-flex flex-column justify-content-between`}>
                             <div className={`${myContentHome['icon-wrapper']}`}>
                                 <img
@@ -64,7 +64,7 @@ export default function ContentHome() {
                             </div>
                         </div>
                     </Col>
-                    <Col>
+                    <Col lg={4} md={12} sm={12} xs={12}>
                         <div className={`${myContentHome['info-card']} d-flex flex-column justify-content-between`}>
                             <div className={`${myContentHome['icon-wrapper']}`}>
                                 <img
@@ -81,7 +81,7 @@ export default function ContentHome() {
                             </div>
                         </div>
                     </Col>
-                    <Col>
+                    <Col lg={4} md={12} sm={12} xs={12}>
                         <div className={`${myContentHome['faq-card']} d-flex flex-column align-items-between`}>
                             <div className={`${myContentHome['icon-wrapper']}`}>
                                 <img

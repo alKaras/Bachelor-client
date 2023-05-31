@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap';
 import Header from '../../components/Header'
-import Footer from '../../components/Footer'
 import mySend from './SendUnits.module.scss';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -90,7 +89,7 @@ export default function SendUnits() {
                                     value={nextnum}
                                     onChange={(e) => setNextnum(e.target.value)}
                                 />
-                                {nextnum <= 0 || nextnum <= prevnum && <div className={`${mySend['error-style']}`}>Некоректний формат</div>}
+                                {(nextnum <= 0 || nextnum <= prevnum) && <div className={`${mySend['error-style']}`}>Некоректний формат</div>}
                             </div>
                             <div className='d-flex flex-column'>
                                 <label>Спожита електроенергія</label>
@@ -101,7 +100,7 @@ export default function SendUnits() {
                                 />
                             </div>
                             <div className='d-flex flex-column'>
-                                Тарифи
+                                <label>Тарифи</label>
                                 <div className="d-flex gap-3 form-price">
                                     <div className='d-flex flex-column'>
                                         Менше 250 <br /> спожитої енергії
@@ -136,7 +135,6 @@ export default function SendUnits() {
                 </Row>
 
             </div>
-            <Footer />
         </>
     )
 }

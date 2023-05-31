@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import Header from '../../components/Header'
-import Footer from '../../components/Footer'
 import myUsersUnits from './UserUnits.module.scss'
 import UnitsAllTable from '../../components/UnitsAllTable'
 import { useDispatch, useSelector } from 'react-redux'
@@ -25,7 +24,6 @@ export default function UsersUnits() {
                 <div className='mb-4'>Всього спожито електроенергії користувачами: {isLoaded ? <span>{sum} кВт⋅год</span> : <span>Loading...</span>}</div>
                 <UnitsAllTable />
             </div>
-            <Footer />
         </>
     )
 }

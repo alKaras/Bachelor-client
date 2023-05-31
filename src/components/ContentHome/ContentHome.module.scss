@@ -3,23 +3,52 @@
     color: white;
     background-color: #0e0e52;
 
+    @media screen and (max-width: 767px) {
+        padding: 40px;
+    }
+
     .content > *:not(:last-child) {
         margin-bottom: 25px;
     }
 
+    .content {
+        @media screen and (max-width: 767px) {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+    }
+
     .head-text {
-        font-size: 40px;
+        font-size: calc(18px + 12 * (100vw / 1260));
         font-weight: bold;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(20px + (20 + 20 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
 
     .body-text {
-        font-size: 20px;
+        font-size: calc(14px + 6 * (100vw / 1260));
         max-width: 500px;
         line-height: 150%;
         color: #b3b3b3;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(14px + (6 + 6 * 0.7) * ((100vw - 320px) / 1260));
+            max-width: 300px;
+            margin: 0 auto;
+        }
     }
-    .btn-text {
+
+    .btn {
         font-size: 16px;
+    }
+    button.btn-text {
+        font-size: 16px !important;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(14px + (6 + 6 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
 
     .img-back {
@@ -31,21 +60,43 @@
 .about {
     padding: 45px 60px;
     color: #ffffff;
-
+    @media screen and (max-width: 767px) {
+        padding: 25px 30px;
+    }
     .head-text {
-        font-size: 40px;
+        font-size: calc(18px + 12 * (100vw / 1260));
+        font-weight: bold;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(20px + (20 + 20 * 0.7) * ((100vw - 320px) / 1260));
+            text-align: center;
+            margin-bottom: 25px;
+        }
         font-weight: bold;
         margin-bottom: 45px;
     }
 
     .about-text {
-        font-size: 20px;
+        font-size: calc(14px + 6 * (100vw / 1260));
         font-weight: 400;
         max-width: 800px;
         margin: 0 auto;
         text-align: center;
         line-height: 150%;
         margin-bottom: 55px;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(14px + (6 + 6 * 0.7) * ((100vw - 320px) / 1260));
+            max-width: 300px;
+            margin: 0 auto;
+            margin-bottom: 25px;
+        }
+    }
+
+    .cards > * {
+        @media screen and (max-width: 990px) {
+            margin-bottom: 15px;
+        }
     }
 
     .speed-card,
@@ -54,6 +105,10 @@
         background: #186fa1;
         padding: 25px 50px;
         border-radius: 15px;
+
+        @media screen and (max-width: 767px) {
+            padding: 15px 25px;
+        }
     }
 
     .icon-wrapper {
@@ -65,6 +120,10 @@
         font-weight: bold;
         font-size: 18px;
         margin-bottom: 15px;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(16px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
 
     .card-body {
@@ -72,6 +131,10 @@
         font-weight: 400;
         text-align: center;
         line-height: 150%;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(12px + (4 + 4 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
 }
 
@@ -79,10 +142,19 @@
     padding: 45px 60px;
     color: #ffffff;
 
+    @media screen and (max-width: 767px) {
+        padding: 25px 30px;
+    }
     .head-text {
         font-size: 40px;
         font-weight: bold;
         margin-bottom: 45px;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(20px + (20 + 20 * 0.7) * ((100vw - 320px) / 1260));
+            text-align: center;
+            margin-bottom: 25px;
+        }
     }
 
     .about-text {
@@ -93,6 +165,13 @@
         text-align: center;
         line-height: 150%;
         margin-bottom: 55px;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(14px + (6 + 6 * 0.7) * ((100vw - 320px) / 1260));
+            max-width: 300px;
+            margin: 0 auto;
+            margin-bottom: 25px;
+        }
     }
 
     .contact-text {
@@ -103,9 +182,14 @@
     .contact-link {
         margin-left: 30px;
         font-size: 20px;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(14px + (6 + 6 * 0.7) * ((100vw - 320px) / 1260));
+            text-align: center;
+        }
     }
 
-    .contact-link > *:not(:last-child){
+    .contact-link > *:not(:last-child) {
         margin-bottom: 25px;
     }
 
@@ -113,6 +197,5 @@
         span {
             color: #dedede;
         }
-        
     }
 }

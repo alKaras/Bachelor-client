@@ -1,8 +1,16 @@
 .root {
     padding: 10px 60px;
-    background-color: #449DD1;
+    background-color: #449dd1;
+
+    @media screen and (max-width: 400px) {
+        padding: 10px 40px;
+    }
     img {
         padding-right: 5px;
+
+        @media screen and (max-width: 767px) {
+            height: 3vh;
+        }
     }
 
     .brand-text {
@@ -30,11 +38,30 @@
         order: 2;
         justify-self: flex-end !important;
         color: #fff;
+
+        & a {
+            font-size: 14px;
+
+            @media screen and (max-width: 767px) {
+                font-size: calc(12px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+            }
+        }
+
         @media (max-width: 767px) {
             order: 0;
         }
     }
+    h1 {
+        @media screen and (max-width: 767px) {
+            font-size: calc(12px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+        }
+    }
     .drop-link {
         padding: 10px;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(10px + (4 + 4 * 0.7) * ((100vw - 320px) / 1260));
+            padding: 5px;
+        }
     }
 }

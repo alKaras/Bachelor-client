@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import Header from '../../components/Header'
-import Footer from '../../components/Footer'
 import adminservice from './AdminService.module.scss';
 import AdminServicesTable from '../../components/AdminServicesTable';
 import { Table } from 'react-bootstrap';
@@ -68,7 +67,6 @@ export default function AdminService() {
                 </div>
                 <AdminServicesTable />
             </div>
-            <Footer />
         </>
     )
 }

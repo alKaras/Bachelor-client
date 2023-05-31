@@ -1,20 +1,33 @@
 .login {
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
     height: 100vh;
 
+    @media screen and (max-width: 767px) {
+        padding: 10px;
+    }
+
     .login-form {
         width: 420px;
         box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
-        padding: 20px 0;
+        padding: 30px 0;
         border-radius: 8px;
         background-color: white;
+
+        @media screen and (max-width: 767px) {
+            padding: 15px 0;
+        }
     }
 
     .auth-form-content {
         padding: 0 20px;
+
+        @media screen and (max-width: 450px) {
+            padding: 0 10px;
+        }
     }
 
     .auth-form-title {
@@ -23,12 +36,20 @@
         font-size: 24px;
         color: rgb(34, 34, 34);
         font-weight: 800;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(16px + (8 + 8 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
 
     label {
         font-size: 16px;
         font-weight: 600;
         color: rgb(34, 34, 34);
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(14px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
 
     input {
@@ -39,10 +60,14 @@
         border-radius: 8px;
         outline: 0;
         margin: 20px 0;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(14px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
 
     input:focus {
-        outline: 1px solid #3742C9;
+        outline: 1px solid #3742c9;
     }
 
     .btn-show {
@@ -51,6 +76,18 @@
         border-radius: 10px;
         margin-bottom: 15px;
         outline: 0;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(12px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+            max-width: 150px;
+        }
+    }
+
+    button,
+    a {
+        @media screen and (max-width: 767px) {
+            font-size: calc(10px + (4 + 4 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
 
     .error-style {
@@ -71,8 +108,10 @@
         font-size: 12px;
         font-weight: bold;
         text-align: center;
+        margin-top: 10px;
 
+        @media screen and (max-width: 767px) {
+            font-size: calc(10px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
-
-    
 }

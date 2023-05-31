@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import Header from '../../components/Header'
-import Footer from '../../components/Footer'
 import myCabinet from './UserCabinet.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSumUserUnits, selectSumOfUsUnits } from '../../redux/slices/unitSlice';
@@ -71,7 +70,6 @@ export default function UserCabinet() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     )
 }

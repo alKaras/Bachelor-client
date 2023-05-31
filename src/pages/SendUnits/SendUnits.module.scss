@@ -5,6 +5,10 @@
         font-size: 24px;
         color: white;
         font-weight: bold;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(16px + (8 + 8 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
     .form-send {
         padding: 20px 40px;
@@ -15,13 +19,26 @@
         box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
         margin-bottom: 25px;
 
+        @media screen and (max-width:767px) {
+            padding: 20px;
+            
+        }
+    }
+
+    label {
+        font-size: 16px;
+        font-weight: 600;
+        color: rgb(34, 34, 34);
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(14px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
     input:disabled {
-        width: 100px;
-        
+        max-width: 100px;
     }
     input {
-        width: 300px;
+        max-width: 300px;
         margin-bottom: 25px;
         padding: 10px;
         font-size: 16px;
@@ -29,6 +46,17 @@
         border-radius: 8px;
         outline: 0;
         margin: 20px 0;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(14px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+        }
+    }
+
+    button,
+    a {
+        @media screen and (max-width: 767px) {
+            font-size: calc(10px + (4 + 4 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
 
     input::-webkit-outer-spin-button,
@@ -59,5 +87,9 @@
         font-weight: bold;
         text-align: center;
         margin-top: 10px;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(10px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+        }
     }
 }

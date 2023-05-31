@@ -1,6 +1,6 @@
 .root {
     padding: 50px 50px 0 50px;
-    
+
     .content {
         color: #fff;
     }
@@ -8,10 +8,20 @@
     .title {
         font-size: 24px;
         margin-bottom: 25px;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(16px + (8 + 8 * 0.7) * ((100vw - 320px) / 1260));
+            text-align: center;
+        }
     }
     .body-text {
         font-size: 16px;
         margin-bottom: 15px;
+
+        @media screen and (max-width: 767px) {
+            font-size: calc(14px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+            text-align: center;
+        }
     }
     .card-service {
         background-color: #fff;
@@ -26,16 +36,30 @@
         .card-title {
             font-size: 16px;
             font-weight: 700;
+
+            @media screen and (max-width: 460px) {
+                font-size: calc(14px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+                text-align: center;
+            }
         }
 
         .card-body {
             max-width: 300px;
             text-align: center;
             line-height: 150%;
+
+            @media screen and (max-width: 460px) {
+                font-size: calc(12px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+                text-align: center;
+            }
         }
 
         .card-footer {
             font-size: 16px;
+            @media screen and (max-width: 460px) {
+                font-size: calc(14px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+                text-align: center;
+            }
         }
 
         .card-price {
@@ -49,5 +73,10 @@
         text-align: center;
         margin: 0 auto;
         margin-bottom: 50px;
+
+        @media screen and (max-width: 460px) {
+            font-size: calc(16px + (4 + 4 * 0.7) * ((100vw - 320px) / 1260));
+            text-align: center;
+        }
     }
 }

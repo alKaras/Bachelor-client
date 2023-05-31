@@ -1,17 +1,28 @@
 .root {
     padding: 80px 60px;
 
+    @media screen and (max-width: 767px) {
+        padding: 40px 30px;
+    }
     .cab-head {
         font-size: 24px;
         color: white;
         margin-bottom: 25px;
+        @media screen and (max-width: 767px) {
+            font-size: calc(16px + (8 + 8 * 0.7) * ((100vw - 320px) / 1260));
+            text-align: center;
+        }
     }
 
     .cab-body {
-        font-size: 18px;
+        font-size: 16px;
         color: white;
         margin-bottom: 15px;
 
+        @media screen and (max-width: 767px) {
+            font-size: calc(14px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+            text-align: center;
+        }
     }
     .sumunits-badge {
         max-width: 200px;
@@ -23,8 +34,21 @@
         border-radius: 15px;
         margin-bottom: 10px;
 
+        @media screen and (max-width: 767px) {
+            margin: 0 auto;
+            margin-bottom: 25px;
+            font-size: calc(16px + (8 + 8 * 0.7) * ((100vw - 320px) / 1260));
+            padding: 10px 10px;
+            height: 100px;
+        }
+
         p {
             font-size: 16px;
+
+            @media screen and (max-width: 767px) {
+                font-size: calc(14px + (2 + 2 * 0.7) * ((100vw - 320px) / 1260));
+                text-align: center;
+            }
         }
     }
 }

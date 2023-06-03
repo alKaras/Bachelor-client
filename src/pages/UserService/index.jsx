@@ -116,7 +116,7 @@ export default function UserService() {
                                 </div>
                                 <div className="d-flex flex-column">
                                     <label>Послуга</label>
-                                    <select {...register("type")}>
+                                    <select {...register("type", {required: "Виберіть одну з послуг"})}>
                                         <option value="sunpanels">Встановлення сонячних панелей</option>
                                         <option value="powercut">Відключення лічильника</option>
                                         <option value="powerconnect">Підключення та налаштування лічильника</option>

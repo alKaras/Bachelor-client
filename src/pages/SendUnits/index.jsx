@@ -10,8 +10,8 @@ import UnitUserTable from '../../components/unitUserTable';
 export default function SendUnits() {
     const dispatch = useDispatch();
     const { error } = useSelector((state) => state.units);
-    
-    
+
+
     const {
         register,
         handleSubmit,
@@ -34,16 +34,16 @@ export default function SendUnits() {
     const [prevnum, setPrevNum] = useState("");
     const [nextnum, setNextnum] = useState("");
     const [result, setResult] = useState("0");
-    
+
     const usedEnergy = nextnum - prevnum;
     const CalculatePrices = () => {
         if (usedEnergy > 250) {
             let res = usedEnergy * 1.68;
-            setResult(res);
+            setResult(res.toFixed(2));
 
         } else {
             let res = usedEnergy * 1.44;
-            setResult(res);
+            setResult(res.toFixed(2));
         }
     }
     return (
@@ -98,6 +98,7 @@ export default function SendUnits() {
                                     value={usedEnergy}
                                     disabled
                                 />
+                                {usedEnergy < 0 && <div className={`${mySend['error-style']}`}>Некоректний формат</div>}
                             </div>
                             <div className='d-flex flex-column'>
                                 <label>Тарифи</label>
@@ -126,7 +127,12 @@ export default function SendUnits() {
                                     />
                                 </div>
                                 <div className='align-self-center'>
-                                    <button onClick={CalculatePrices} className='btn btn-primary form-button'>Розрахувати</button>
+                                    {usedEnergy < 0 ? <>
+                                        <button onClick={CalculatePrices} disabled className='btn btn-primary form-button'>Розрахувати</button>
+                                    </> :
+                                        <button onClick={CalculatePrices} className='btn btn-primary form-button'>Розрахувати</button>
+                                    }
+
                                 </div>
                             </div>
                         </div>
